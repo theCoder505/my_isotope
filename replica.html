@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+    <style>
+
+        button:focus {
+            outline: none;
+        }
+
+        body{
+            background-color: rgb(51, 50, 50);
+        }
+
+        .itemContainer {
+            width: 85vw;
+            margin: 0px auto;
+        }
+
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            margin: 20px 0px;
+            width: 15vw;
+            min-height: 300px;
+            margin-right: 20px;
+            border: none;
+            transition: all 0.5s;
+            -ms-transform: scale(1); /* IE 9 */
+            -webkit-transform: scale(1); /* Safari 3-8 */
+            transform: scale(1); 
+            /* position: relative!important;
+            float: left; */
+        }
+
+
+        .card img {
+            width: 100%;
+            height: 180px;
+        }
+
+        .headline {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: rgb(51, 50, 50);
+            padding: 0px 10px;
+            padding-top: 7px;
+        }
+
+        .expand_btn {
+            width: 100px;
+            padding: 7px 10px;
+            font-size: 0.8rem;
+            border-radius: 5px;
+            border: none;
+            background: #2699fb;
+            color: white;
+            font-weight: 600;
+        }
+
+        .commonBtn {
+            width: 80px;
+            padding: 7px 10px;
+            background: #2699fb;
+            border-radius: 5px;
+            border: none;
+            font-size: 0.8rem;
+            color: white;
+            font-weight: 600;
+            margin-right: 15px;
+        }
+
+        .menuBtn {
+            width: 80px;
+            font-size: 1rem;
+            font-weight: 500;
+            background: #2699fb;
+            border-radius: 5px;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            margin-right: 15px;
+        }
+
+        .menuBtn:hover, .red{
+            background-color: #fb2626;
+        }
+
+        .full_text,
+        .show_lill_bit {
+            padding: 0px 10px;
+            font-size: 0.8rem;
+        }
+
+
+        .show_lill_bit {
+            height: 80px;
+            overflow: hidden;
+            background: -webkit-linear-gradient(#333, #eee);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+
+        .lineRow {
+            border: 1px solid #bce0fd;
+            background: #bce0fd;
+        }
+
+        .dFlex {
+            display: flex;
+        }
+
+        .bold600 {
+            font-weight: 600;
+        }
+
+        .show_scroll {
+            overflow-y: scroll;
+        }
+
+        .hidden {
+            -ms-transform: scale(0);
+            -webkit-transform: scale(0); 
+            transform: scale(0);  
+            /* display: none; */
+            /* transition: 1s; */
+            /* animation: anim 2s linear; */
+            /* height: 0px;
+            width: 0px; */
+            position: absolute;
+            left: 0;
+        }
+
+        .d_none{
+            display: none;
+        }
+
+        .activated {
+            display: block;
+        }
+
+
+        .expand_btn,
+        .bold600,
+        .dFlex{
+            margin-left: 10px;
+        }
+    </style>
+
+    <style>
+        @media screen and (max-width: 850px) {
+
+            .itemContainer {
+                width: 90vw;
+                margin: 0px auto;
+            }
+
+            .card {
+                margin: 20px auto;
+                width: 20vw;
+                min-height: 300px;
+                margin-right: 20px;
+                border: none;
+            }
+
+            .card img {
+                width: 100%;
+                height: 180px;
+            }
+
+            .filter {
+                text-align: center;
+            }
+
+        }
+    </style>
+
+
+    <style>
+        @media screen and (max-width: 600px) {
+
+
+            .card {
+                margin: 20px auto;
+                width: 38vw;
+                min-height: 300px;
+                margin-right: 20px;
+                border: none;
+            }
+
+            .card img {
+                width: 100%;
+                height: 180px;
+            }
+
+            .filter {
+                text-align: center;
+            }
+
+        }
+    </style>
+
+
+    <title> New Practice </title>
+</head>
+
+<body>
+
+    <div class="itemContainer">
+        <div class="filter mt-5">
+            <button class="mt-3 menuBtn" data-filter="*">All</button>
+            <button class="mt-3 menuBtn hp" data-filter=".hp">Hp</button>
+            <button class="mt-3 menuBtn" data-filter=".acer">Acer</button>
+            <button class="mt-3 menuBtn" data-filter=".samsung">Samsung</button>
+            <button class="mt-3 menuBtn" data-filter=".apple">Apple</button>
+            <button class="mt-3 menuBtn" data-filter=".del">Del</button>
+            <button class="mt-3 menuBtn" data-filter=".doyal">Doyal</button>
+            <button class="mt-3 menuBtn" data-filter=".ferrari">Ferrari</button>
+            <button class="mt-3 menuBtn" data-filter=".walton">Walton</button>
+        </div>
+
+        <div class="cards">
+
+
+            <div class="card hp">
+                <img src="images/amazonads1.gif" alt="Sample photo">
+                <h2 class="headline">HP 1</h2>
+                <p class="full_text show_lill_bit show_bit_hp_1">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis ullam dolor modi cum tempore,
+                    totam nisi dicta perspiciatis unde accusantium optio omnis ad, dolorum molestias illum labore
+                    tenetur magnam officia!
+                </p>
+                <button class="expand_btn" onclick="expandFunc('show_bit_hp_1')">Expand text</button>
+                <hr class="lineRow">
+
+                <small class="bold600">Suspendisse vehicula mauris.</small>
+                <div class="dFlex">
+                    <button class="commonBtn my-2"> Button </button>
+                    <button class="commonBtn my-2"> Button </button>
+                </div>
+            </div>
+
+
+            <div class="card hp">
+                <img src="images/pcad2.gif" alt="Sample photo">
+                <h2 class="headline">HP 2</h2>
+                <p class="full_text show_lill_bit show_bit_hp_2">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis ullam dolor modi cum tempore,
+                    totam nisi dicta perspiciatis unde accusantium optio omnis ad, dolorum molestias illum labore
+                    tenetur magnam officia!
+                </p>
+                <button class="expand_btn" onclick="expandFunc('show_bit_hp_2')">Expand text</button>
+                <hr class="lineRow">
+
+                <small class="bold600">Suspendisse vehicula mauris.</small>
+                <div class="dFlex">
+                    <button class="commonBtn my-2"> Button </button>
+                    <button class="commonBtn my-2"> Button </button>
+                </div>
+            </div>
+
+
+            <div class="card acer">
+                <img src="images/computer1.jpg" alt="Sample photo">
+                <h2 class="headline">ACER 1</h2>
+                <p class="full_text show_lill_bit show_bit_acer_1">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis ullam dolor modi cum tempore,
+                    totam nisi dicta perspiciatis unde accusantium optio omnis ad, dolorum molestias illum labore
+                    tenetur magnam officia!
+                </p>
+                <button class="expand_btn" onclick="expandFunc('show_bit_acer_1')">Expand text</button>
+                <hr class="lineRow">
+
+                <small class="bold600">Suspendisse vehicula mauris.</small>
+                <div class="dFlex">
+                    <button class="commonBtn my-2"> Button </button>
+                    <button class="commonBtn my-2"> Button </button>
+                </div>
+            </div>
+
+
+            <div class="card acer">
+                <img src="images/computer2.jpg" alt="Sample photo">
+                <h2 class="headline">ACER 2</h2>
+                <p class="full_text show_lill_bit show_bit_acer_2">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis ullam dolor modi cum tempore,
+                    totam nisi dicta perspiciatis unde accusantium optio omnis ad, dolorum molestias illum labore
+                    tenetur magnam officia!
+                </p>
+                <button class="expand_btn" onclick="expandFunc('show_bit_acer_2')">Expand text</button>
+                <hr class="lineRow">
+
+                <small class="bold600">Suspendisse vehicula mauris.</small>
+                <div class="dFlex">
+                    <button class="commonBtn my-2"> Button </button>
+                    <button class="commonBtn my-2"> Button </button>
+                </div>
+            </div>
+
+
+            <div class="card samsung">
+                <img src="images/computer4.jpg" alt="Sample photo">
+                <h2 class="headline">SAMSUNG 1</h2>
+                <p class="full_text show_lill_bit show_bit_samsung_1">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis ullam dolor modi cum tempore,
+                    totam nisi dicta perspiciatis unde accusantium optio omnis ad, dolorum molestias illum labore
+                    tenetur magnam officia!
+                </p>
+                <button class="expand_btn" onclick="expandFunc('show_bit_samsung_1')">Expand text</button>
+                <hr class="lineRow">
+
+                <small class="bold600">Suspendisse vehicula mauris.</small>
+                <div class="dFlex">
+                    <button class="commonBtn my-2"> Button </button>
+                    <button class="commonBtn my-2"> Button </button>
+                </div>
+            </div>
+
+
+            <div class="card samsung">
+                <img src="images/pcad2.gif" alt="Sample photo">
+                <h2 class="headline">SAMSUNG 2</h2>
+                <p class="full_text show_lill_bit show_bit_samsung_2">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis ullam dolor modi cum tempore,
+                    totam nisi dicta perspiciatis unde accusantium optio omnis ad, dolorum molestias illum labore
+                    tenetur magnam officia!
+                </p>
+                <button class="expand_btn" onclick="expandFunc('show_bit_samsung_2')">Expand text</button>
+                <hr class="lineRow">
+
+                <small class="bold600">Suspendisse vehicula mauris.</small>
+                <div class="dFlex">
+                    <button class="commonBtn my-2"> Button </button>
+                    <button class="commonBtn my-2"> Button </button>
+                </div>
+            </div>
+
+
+            <div class="card apple">
+                <img src="images/pcad3.gif" alt="Sample photo">
+                <h2 class="headline">APPLE 1</h2>
+                <p class="full_text show_lill_bit show_bit_apple_1">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis ullam dolor modi cum tempore,
+                    totam nisi dicta perspiciatis unde accusantium optio omnis ad, dolorum molestias illum labore
+                    tenetur magnam officia!
+                </p>
+                <button class="expand_btn" onclick="expandFunc('show_bit_apple_1')">Expand text</button>
+                <hr class="lineRow">
+
+                <small class="bold600">Suspendisse vehicula mauris.</small>
+                <div class="dFlex">
+                    <button class="commonBtn my-2"> Button </button>
+                    <button class="commonBtn my-2"> Button </button>
+                </div>
+            </div>
+
+
+            <div class="card apple">
+                <img src="images/computer3.jpg" alt="Sample photo">
+                <h2 class="headline">APPLE 2</h2>
+                <p class="full_text show_lill_bit show_bit_apple_2">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis ullam dolor modi cum tempore,
+                    totam nisi dicta perspiciatis unde accusantium optio omnis ad, dolorum molestias illum labore
+                    tenetur magnam officia!
+                </p>
+                <button class="expand_btn" onclick="expandFunc('show_bit_apple_2')">Expand text</button>
+                <hr class="lineRow">
+
+                <small class="bold600">Suspendisse vehicula mauris.</small>
+                <div class="dFlex">
+                    <button class="commonBtn my-2"> Button </button>
+                    <button class="commonBtn my-2"> Button </button>
+                </div>
+            </div>
+
+
+            <div class="card del">
+                <img src="images/pcad3.gif" alt="Sample photo">
+                <h2 class="headline">DEL 1</h2>
+                <p class="full_text show_lill_bit show_bit_del_1">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis ullam dolor modi cum tempore,
+                    totam nisi dicta perspiciatis unde accusantium optio omnis ad, dolorum molestias illum labore
+                    tenetur magnam officia!
+                </p>
+                <button class="expand_btn" onclick="expandFunc('show_bit_del_1')">Expand text</button>
+                <hr class="lineRow">
+
+                <small class="bold600">Suspendisse vehicula mauris.</small>
+                <div class="dFlex">
+                    <button class="commonBtn my-2"> Button </button>
+                    <button class="commonBtn my-2"> Button </button>
+                </div>
+            </div>
+
+
+            <div class="card walton">
+                <img src="images/amazonads1.gif" alt="Sample photo">
+                <h2 class="headline">WALTON 1 </h2>
+                <p class="full_text show_lill_bit show_bit_walton_1">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis ullam dolor modi cum tempore,
+                    totam nisi dicta perspiciatis unde accusantium optio omnis ad, dolorum molestias illum labore
+                    tenetur magnam officia! Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni quos officia
+                    rem, soluta debitis, exercitationem porro nemo assumenda quaerat corrupti asperiores dolore harum
+                    blanditiis, nam quas tenetur neque iusto ullam.
+                </p>
+                <button class="expand_btn" onclick="expandFunc('show_bit_walton_1')">Expand text</button>
+                <hr class="lineRow">
+
+                <small class="bold600">Suspendisse vehicula mauris.</small>
+                <div class="dFlex">
+                    <button class="commonBtn my-2"> Button </button>
+                    <button class="commonBtn my-2"> Button </button>
+                </div>
+            </div>
+
+
+            <div class="card walton">
+                <img src="images/computer3.jpg" alt="Sample photo">
+                <h2 class="headline">WALTON 2 </h2>
+                <p class="full_text show_lill_bit show_bit_walton_2">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis ullam dolor modi cum tempore,
+                    totam nisi dicta perspiciatis unde accusantium optio omnis ad, dolorum molestias illum labore
+                    tenetur magnam officia! Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni quos officia
+                    rem, soluta debitis, exercitationem porro nemo assumenda quaerat corrupti asperiores dolore harum
+                    blanditiis, nam quas tenetur neque iusto ullam.
+                </p>
+                <button class="expand_btn" onclick="expandFunc('show_bit_walton_2')">Expand text</button>
+                <hr class="lineRow">
+
+                <small class="bold600">Suspendisse vehicula mauris.</small>
+                <div class="dFlex">
+                    <button class="commonBtn my-2"> Button </button>
+                    <button class="commonBtn my-2"> Button </button>
+                </div>
+            </div>
+
+            <div class="card walton">
+                <img src="images/computer3.jpg" alt="Sample photo">
+                <h2 class="headline">WALTON 3</h2>
+                <p class="full_text show_lill_bit show_bit_walton_3">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis ullam dolor modi cum tempore,
+                    totam nisi dicta perspiciatis unde accusantium optio omnis ad, dolorum molestias illum labore
+                    tenetur magnam officia! Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni quos officia
+                    rem, soluta debitis, exercitationem porro nemo assumenda quaerat corrupti asperiores dolore harum
+                    blanditiis, nam quas tenetur neque iusto ullam.
+                </p>
+                <button class="expand_btn" onclick="expandFunc('show_bit_walton_3')">Expand text</button>
+                <hr class="lineRow">
+
+                <small class="bold600">Suspendisse vehicula mauris.</small>
+                <div class="dFlex">
+                    <button class="commonBtn my-2"> Button </button>
+                    <button class="commonBtn my-2"> Button </button>
+                </div>
+            </div>
+
+
+            <div class="card ferrari">
+                <img src="images/computer3.jpg" alt="Sample photo">
+                <h2 class="headline">FERRARI 1 </h2>
+                <p class="full_text show_lill_bit show_bit_ferrari_2">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis ullam dolor modi cum tempore,
+                    totam nisi dicta perspiciatis unde accusantium optio omnis ad, dolorum molestias illum labore
+                    tenetur magnam officia!
+                </p>
+                <button class="expand_btn" onclick="expandFunc('show_bit_ferrari_2')">Expand text</button>
+                <hr class="lineRow">
+
+                <small class="bold600">Suspendisse vehicula mauris.</small>
+                <div class="dFlex">
+                    <button class="commonBtn my-2"> Button </button>
+                    <button class="commonBtn my-2"> Button </button>
+                </div>
+            </div>
+
+
+            <div class="card doyal">
+                <img src="images/computer3.jpg" alt="Sample photo">
+                <h2 class="headline">DOYEL 1</h2>
+                <p class="full_text show_lill_bit show_bit_doyal_2">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis ullam dolor modi cum tempore,
+                    totam nisi dicta perspiciatis unde accusantium optio omnis ad, dolorum molestias illum labore
+                    tenetur magnam officia!
+                </p>
+                <button class="expand_btn" onclick="expandFunc('show_bit_doyal_2')">Expand text</button>
+                <hr class="lineRow">
+
+                <small class="bold600">Suspendisse vehicula mauris.</small>
+                <div class="dFlex">
+                    <button class="commonBtn my-2"> Button </button>
+                    <button class="commonBtn my-2"> Button </button>
+                </div>
+            </div>
+
+            <div class="card apple">
+                <img src="images/computer3.jpg" alt="Sample photo">
+                <h2 class="headline">APPLE 3</h2>
+                <p class="full_text show_lill_bit show_bit_apple_3">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis ullam dolor modi cum tempore,
+                    totam nisi dicta perspiciatis unde accusantium optio omnis ad, dolorum molestias illum labore
+                    tenetur magnam officia!
+                </p>
+                <button class="expand_btn" onclick="expandFunc('show_bit_apple_3')">Expand text</button>
+                <hr class="lineRow">
+
+                <small class="bold600">Suspendisse vehicula mauris.</small>
+                <div class="dFlex">
+                    <button class="commonBtn my-2"> Button </button>
+                    <button class="commonBtn my-2"> Button </button>
+                </div>
+            </div>
+
+
+            <div class="card del">
+                <img src="images/pcad3.gif" alt="Sample photo">
+                <h2 class="headline">DEL 4</h2>
+                <p class="full_text show_lill_bit show_bit_del_4">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis ullam dolor modi cum tempore,
+                    totam nisi dicta perspiciatis unde accusantium optio omnis ad, dolorum molestias illum labore
+                    tenetur magnam officia!
+                </p>
+                <button class="expand_btn" onclick="expandFunc('show_bit_del_4')">Expand text</button>
+                <hr class="lineRow">
+
+                <small class="bold600">Suspendisse vehicula mauris.</small>
+                <div class="dFlex">
+                    <button class="commonBtn my-2"> Button </button>
+                    <button class="commonBtn my-2"> Button </button>
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
+        integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
+        crossorigin="anonymous"></script>
+
+    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+
+    <script>
+        // isotope jquery command
+        // $mainIsotopeGrid = $('.cards').isotope({
+        //     itemSelector: '.card',
+        //     layoutMode: 'fitRows'
+        // });
+
+
+        // $('.filter button').on("click", function () {
+        //     $value = $(this).attr("data-filter");
+
+        //     $mainIsotopeGrid.isotope({
+        //         filter: $value
+        //     });
+
+        //     // $(".expand_btn").click();
+        //     // $(".expand_btn").toggleClass("show_lill_bit");
+
+        // });
+        // isotope jquery command done 
+
+
+
+
+        //add hidden class to the card items 
+        // $( document ).ready(function() {
+        // $(".full_text show_lill_bit").addClass("show_lill_bit");
+        // });
+
+
+
+        // expanding javascript 
+        function expandFunc(event) {
+            $("." + event).toggleClass("show_lill_bit");
+            // $("." + event).toggleClass("fullHeight");
+            // var heightDivPrev = Math.floor(($(".card")).height());
+            // $("." + event + ".show_lill_bit").slideToggle("slow");
+            // $("." + event).toggleClass("show_scroll");
+            // var height = ($("." + event)).height();
+            // var heightDivNext = Math.floor(($(".card")).height());
+            // alert(height + " : " + (heightDivNext - heightDivPrev));
+            // var padding = (heightDivNext - heightDivPrev);
+            // if(padding > 0){
+            //     console.log("Okay");
+            //     $(".card").css("padding-bottom", (height));
+            // }
+        }
+
+
+        // new tests 
+
+
+        $('.menuBtn').on("click", function () {
+            let filter = $(this).data("filter");
+            $(".menuBtn").removeClass("red");
+            $(this).addClass("red");
+
+            if (filter != "*") {
+                $(".cards .card").addClass("hidden");
+                $(".cards .card").removeClass("activated");
+                $(".cards " + filter).removeClass("hidden");
+                $(".cards " + filter).addClass("activated");
+
+                // $(".cards .card").fadeOut(1000);
+                // $(".cards " + filter).fadeIn(1000);
+            }
+            else {
+                $(".cards .card").addClass("activated");
+                $(".cards .card").removeClass("hidden");
+            }
+        });
+
+
+    </script>
+
+
+</body>
+
+</html>
